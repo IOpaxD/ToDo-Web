@@ -1,0 +1,47 @@
+
+
+
+
+<div class="header">
+  <h1>Задачи
+
+<%= link_to '#', id: "create_todo" do %>
+   <%= image_tag("addTodoIcon.png") %>
+<% end %>
+</h1>
+</div>
+
+<div id="content">
+  <div id="projects">
+    <% @projects.each do |project| %>
+      <div id="project_cart">
+          <h2><%= project.title %></h2>
+          <div id="line"></div>
+          <ul>
+            <% project.todos.each do |todo| %>
+               <li>
+                 <%= form_for :todos, method: :patch, html: {id: "update" } do |f| %>
+                 <label for="chek_todo_<%= todo.id %>"><span></span><p><%= todo.text %></p></label>
+                 <%= f.hidden_field :id, :value => todo.id %>
+                 <% end %>
+               </li>
+             <% end %>
+           </ul>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <div class="form-box">
+ <div class="form-box-wrapper">
+   <%= form_for :todo, url: todos_path do |form| %>
+     <%= form.text_field :text, placeholder: 'Название задачи' %>
+     <br>
+     <%= form.select(:project_id, Project.all.collect{|p| [ p.title, p.id ] }, {include_blank: 'Категория'}) %>
+     <br>
+     <form action="" method="GET|POST">
+     <a href="#" onClick="this.parentNode.submit(); return false;">OK</a>
+     <a href="#" id="cansel" class="cansel">ОТМЕНА</a>
+     </form>
+   <% end %>
+ </div>
+</div>
