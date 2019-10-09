@@ -12,16 +12,24 @@ require('jquery')
 
 
 
+
 $(document).ready(function(){
-  $(".form-box").hide();
+  $(".background").hide();
     $("#create_todo").click(function () {
-            $(".form-box").show();
+            $(".background").show();
     });
-    $("#cansel").click(function () {
-            $(".form-box").hide();
+    $(".cansel").click(function () {
+            $(".background").hide();
 
 });
 });
+
+// $ (document) .ready (function () {
+//   $ ('.icheckbox_square-blue'). iCheck ({
+//     checkboxClass: 'icheckbox_flat',
+//     radioClass: 'iradio_flat'
+//   });
+// });
 
 // $(document).ready(function(){
 //   $("#ok").on('click', function(){

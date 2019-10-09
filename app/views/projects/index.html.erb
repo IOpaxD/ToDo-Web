@@ -1,47 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Todo</title>
+  </head>
 
 
+<div class="content">
 
 
-<div class="header">
-  <h1>Задачи
+    <div class="header">
+      <h3 class="task">Задачи</h3>
+       <%= link_to '#', id: "create_todo" do %>
+        <%= image_tag("addTodoIcon.png") %>
+      <% end %>
+    </div>
 
-<%= link_to '#', id: "create_todo" do %>
-   <%= image_tag("addTodoIcon.png") %>
-<% end %>
-</h1>
-</div>
 
-<div id="content">
-  <div id="projects">
-    <% @projects.each do |project| %>
-      <div id="project_cart">
-          <h2><%= project.title %></h2>
-          <div id="line"></div>
-          <ul>
+     <div class="container">
+      <% @projects.each do |project| %>
+       <div class="item">
+         <p id=task_title><%= project.title %></p>
+          <div class="line"></div>
+          <div class="todo_block">
             <% project.todos.each do |todo| %>
-               <li>
-                 <%= form_for :todos, method: :patch, html: {id: "update" } do |f| %>
-                 <label for="chek_todo_<%= todo.id %>"><span></span><p><%= todo.text %></p></label>
-                 <%= f.hidden_field :id, :value => todo.id %>
+                 <p id="task_text"><%= form_for :todos, method: :patch, html: {id: "update" } do |f| %></p>
+                 <%= f.check_box(:isCompleted,{class: 'icheckbox_square-blue', dataskin: "square", datacolor: "blue", onchange: "onChange.call(this);", checked: todo.isCompleted, id:"chek_todo_" + todo.id.to_s}, todo.id) %>
+                   <label for="chek_todo_<%= todo.id %>"><p class="p_text"><%= todo.text %></p></label>
+                  <%= f.hidden_field :id, :value => todo.id %>
                  <% end %>
-               </li>
-             <% end %>
-           </ul>
+               <% end %>
+               </div>
+               </div>
+           <% end %>
+           </div>
+
+
+<div class="background">
+    <div class="container-form">
+        <%= form_for :todo, url: todos_path do |form| %>
+        <p id="new_task">Новая задача</p>
+        <hr>
+        <div class="form_text">
+        <%= form.text_field :text, placeholder: '  Название задачи...' %>
       </div>
-    <% end %>
-  </div>
-  <br>
-  <div class="form-box">
- <div class="form-box-wrapper">
-   <%= form_for :todo, url: todos_path do |form| %>
-     <%= form.text_field :text, placeholder: 'Название задачи' %>
-     <br>
-     <%= form.select(:project_id, Project.all.collect{|p| [ p.title, p.id ] }, {include_blank: 'Категория'}) %>
-     <br>
-     <form action="" method="GET|POST">
-     <a href="#" onClick="this.parentNode.submit(); return false;">OK</a>
-     <a href="#" id="cansel" class="cansel">ОТМЕНА</a>
+         <br>
+         <%= form.select(:project_id, Project.all.collect{|p| [ p.title, p.id] }, {include_blank: true, minimumResultsForSearch: -1}) %>
+         <br>
+
+         <form action="" method="GET|POST">
+       <a href="#" class="cansel">ОТМЕНА</a>
+       <a href="#" class="ok" onClick="this.parentNode.submit(); ">OK</a>
      </form>
-   <% end %>
- </div>
-</div>
+        <% end %>
+      </div>
+      <div>
+    </div>

@@ -31,7 +31,7 @@ class TodosController < ApplicationController
         format.html { redirect_to home_path, notice: 'Задача успешно дабавлена' }
         format.json { render :show, status: :created, location: @todo }
       else
-        format.html { render :new }
+        format.html { redirect_to home_path }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
     end
