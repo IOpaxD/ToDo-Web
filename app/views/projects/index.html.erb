@@ -3,7 +3,7 @@
 
 <div class="content">
 
-
+<!---------------------- Шапка ---------------------------->
     <div class="header">
       <h3 class="task">Задачи</h3>
        <%= link_to '#', id: "create_todo" do %>
@@ -11,7 +11,7 @@
       <% end %>
     </div>
 
-
+<!----------------------- Карточки ---------------------------- -->
      <div class="container">
       <% @projects.each do |project| %>
        <div class="item">
@@ -20,8 +20,10 @@
           <div class="todo_block">
             <% project.todos.each do |todo| %>
                  <p id="task_text"><%= form_for :todos, method: :patch, html: {id: "update" } do |f| %></p>
-                 <%= f.check_box(:isCompleted,{class: 'icheckbox_square-blue', dataskin: "square", datacolor: "blue", onchange: "onChange.call(this);", checked: todo.isCompleted, id:"chek_todo_" + todo.id.to_s}, todo.id) %>
-                   <label for="chek_todo_<%= todo.id %>"><p class="p_text"><%= todo.text %></p></label>
+
+                 <%# ..------------------------------------------------Тут что-то неправильно... %>
+                 <%= f.check_box(:isCompleted,{class: 'icheckbox_square-blue', dataskin: "square", datacolor: "blue", onchange: "onChange.call(this);", checked: todo.isCompleted, id:"chek_todo_" }, todo.id) %>
+                   <label for="chek_todo_<%= todo.id %>"><p class="p_text"><%= todo.text%></p></label>
                   <%= f.hidden_field :id, :value => todo.id %>
                  <% end %>
                <% end %>
@@ -29,8 +31,7 @@
                </div>
            <% end %>
            </div>
-
-
+<!---------------- Всплываюший div ---------------------->
 <div class="background">
     <div class="container-form">
         <%= form_for :todo, url: todos_path do |form| %>
@@ -40,9 +41,9 @@
         <%= form.text_field :text, placeholder: '  Название задачи...' %>
       </div>
          <br>
-         <%= form.select(:project_id, Project.all.collect{|p| [ p.title, p.id] }, {include_blank: true, minimumResultsForSearch: -1}) %>
+         <%#--------------------------------------------------------------------------- вот здесь не получается спрятать слово "категория"// %>
+         <%= form.select(:project_id, Project.all.collect{|p| [ p.title, p.id] }, {include_blank: "Категория", minimumResultsForSearch: -1}) %>
          <br>
-
          <form action="" method="GET|POST">
        <a href="#" class="cansel">ОТМЕНА</a>
        <a href="#" class="ok" onClick="this.parentNode.submit(); ">OK</a>

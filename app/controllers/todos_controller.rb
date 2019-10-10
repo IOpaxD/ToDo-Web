@@ -28,7 +28,7 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to home_path, notice: 'Задача успешно дабавлена' }
+        format.html { redirect_to home_path }
         format.json { render :show, status: :created, location: @todo }
       else
         format.html { redirect_to home_path }

@@ -6,8 +6,6 @@
 @import 'icheck/square/blue';
 
 @font-face {
-
-
 	font-family: "OpenSans-Semibold";
 	src: url('/assets/OpenSans-Semibold');
 
@@ -26,13 +24,12 @@ div{
 }
 
 .content{
-
    position: relative;
 	 height: 100%;
 	 min-width: 445;
-
-
 }
+
+///////////////////////header////////////////////////
 
 .header{
   color: white;
@@ -48,14 +45,13 @@ div{
 .task{
   display: flex;
   align-items: center;
-
   color: white;
   margin:auto;
 }
 
 #create_todo{
-margin-right: 10px;
-background: none;
+	margin-right: 10px;
+	background: none;
 }
 
  .container{
@@ -66,9 +62,8 @@ background: none;
 	 justify-content: center;
 	 margin-left: 30px;
 	 min-width: 445px;
-
-
  }
+
  @media(max-width:740px){
  .container{
 	 grid-template-columns:1fr;
@@ -86,59 +81,56 @@ background: none;
 	width: 360px;
 	padding:0 10px;
   box-shadow: 0px 2px 4px  #ccc;
-		background-color: rgba(244, 244, 244, 0.20);
-		border-radius: 1px ;
+	background-color: rgba(244, 244, 244, 0.20);
+	border-radius: 1px ;
 }
-.line{
 
+.line{
   border-bottom: 1px solid rgba(0,0,0,0.1);
 }
+
 .p_text{
 	padding: 0 20px;
 	font-family: 'OpenSans-Light', sans-serif;
 	font-size: 14px;
-
-
 }
+
 #task_title{
 	text-transform: uppercase;
  font-family: 'OpenSans-Semibold';
  padding:10px 20px 5px 20px;
  font-size: 12px;
-
 }
+
 #task_text{
   padding: 20px 10px 5px 20px;
   font-style: italic;
 }
+
 .todo_block{
 	padding: 0 10px 20px 20px;
 }
+
 div.item{
 	padding: 0px ;
 }
-
-
-
-
-#checkbox{
-  display: unset;
-}
-
+/////////////////checkbox/////////////////////////
 input[type="checkbox"] {
 
 }
 input[type="checkbox"] + label span {
-    display:inline-block;
-    width: 17px;
-    height: 17px;
-    margin:-1px 4px 0 0;
-    vertical-align:middle;
-    background:url(image_path('blue.png')) -24px  top no-repeat;
-    cursor:pointer;
-		background-color: #fff;
+  display:inline-block;
+  width: 17px;
+  height: 17px;
+  margin:-1px 4px 0 0;
+  vertical-align:middle;
+  background:url(image_path('blue.png')) -24px  top no-repeat;
+  cursor:pointer;
+	background-color: #fff;
 }
-input[type="checkbox"]:checked + label span {    background:url(image_tag('blue.png')) -48px top no-repeat;
+
+input[type="checkbox"]:checked + label span {
+	    background:url(image_path('blue.png')) -48px top no-repeat;
 }
 
 .icheckbox_square-blue:checked + label p{
@@ -147,14 +139,13 @@ input[type="checkbox"]:checked + label span {    background:url(image_tag('blue.
 
 /* HiDPI support */
 @media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25dppx) {
-    .icheckbox_square-blue,
-    .iradio_square-blue {
-        background-image: url(image_path('blue@2x.png'));
-        -webkit-background-size: 240px 24px;
-        background-size: 240px 24px;
+  .icheckbox_square-blue,
+  .iradio_square-blue {
+      background-image: url(image_path('blue@2x.png'));
+      -webkit-background-size: 240px 24px;
+      background-size: 240px 24px;
     }
 }
-
 
 #update{
 	display: flex;
@@ -163,24 +154,24 @@ input[type="checkbox"]:checked + label span {    background:url(image_tag('blue.
 ///////////////////////FORM//////////////////
 
 .background{
- 		opacity: 0;/* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+ 		opacity: 0;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.8);
 		transition: .3s;
 }
 .background:hover{
 	visibility:visible;
 	opacity: 1;
-
 }
+
 .container-form{
 	margin: auto;
   position: absolute;
@@ -227,12 +218,9 @@ select{
 }
 
 select {
-
-
-   background:url(image_path('down_arrow_select')) right no-repeat;
-   border: 1px solid #ccc;
-
-   }
+  background:url(image_path('down_arrow_select')) right no-repeat;
+  border: 1px solid #ccc;
+ }
 
 .form{
  height: 200px;
@@ -240,9 +228,8 @@ select {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 5px;
-
-
 }
+
 .ok{
 	padding: 10px 70px;
   background-color:rgb(58, 175, 218) ;
@@ -250,15 +237,14 @@ select {
 	font-style: 'OpenSans-Semibold';
 	font-size: 10px;
 	color: #ffffff;
-
 }
+
 .ok:hover{
 	background-color:rgb(24, 145, 180) ;
-
 	transition: .5s;
 }
-.cansel{
 
+.cansel{
 	padding: 10px 63px;
   background-color:rgb(128, 128, 128) ;
   text-decoration: none;
@@ -269,7 +255,6 @@ select {
 
 .cansel:hover{
 	background-color:rgb(80, 80, 80) ;
-
 	transition: .5s;
 }
 // .form-box{
